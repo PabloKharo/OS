@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-pedantic -Wall -lpthread -pthread
+CFLAGS=-pedantic -Wall
 
 $(N_OUT): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(N_OUT) $(OBJECTS)
@@ -16,8 +16,8 @@ c: src/c.c src/get_line/get_line.o
 	$(CC) $(CFLAGS) src/c.c src/get_line/get_line.o -o c
 
 src/get_line/get_line.o: src/get_line/get_line.c src/get_line/get_line.h
-	$(CC) $(CFLAGS) -c -o src/get_line/get_line.o
+	$(CC) $(CFLAGS) src/get_line/get_line.c -c -o src/get_line/get_line.o
 
 .PHONY: clean
 clean:
-	-rm a b c src/get_line/get_line.o
+	rm -f a b c src/get_line/get_line.o
